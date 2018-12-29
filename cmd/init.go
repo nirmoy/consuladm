@@ -35,7 +35,11 @@ func agent_run() {
 	flagArgs.Config.AdvertiseAddrLAN = &consulAdmConfig.Advertise
 	flagArgs.Config.DataDir = &consulAdmConfig.DataDir
 	flagArgs.Config.Datacenter = &consulAdmConfig.DataCenter
+	flagArgs.Config.ServerMode = &consulAdmConfig.ServerMode
+	flagArgs.Config.ClientAddr = &consulAdmConfig.ClientAddr
+	flagArgs.Config.NodeName = &consulAdmConfig.Name
 
+	fmt.Print(*flagArgs.Config.AdvertiseAddrLAN)
 	b, err := config.NewBuilder(flagArgs)
 	if err != nil {
 		fmt.Print(err)
@@ -69,4 +73,7 @@ var initCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(initCmd)
+	initCmd.PersistentFlags().StringVar(&consulAdmConfig.Name, "name", "", "consul member name")
+	initCmd.PersistentFlags().StringVar(&consulAdmConfig.Advertise, "advertise", "", "Advertise address")
+
 }

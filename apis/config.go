@@ -32,6 +32,8 @@ type ConsulAdmConfig struct {
 	Name            string
 	DataDir         string
 	DataCenter      string
+	ServerMode      bool
+	ClientAddr      string
 }
 
 func DefaultAdvertise(cfg *ConsulAdmConfig) error {
@@ -58,6 +60,8 @@ func SetDefaults(cfg *ConsulAdmConfig) error {
 	cfg.Version = constants.DefaultVersion
 	cfg.DataDir = constants.DefaultDataDir
 	cfg.DataCenter = "dc1"
+	cfg.ServerMode = true
+	cfg.ClientAddr = "0.0.0.0"
 
 	return nil
 }
