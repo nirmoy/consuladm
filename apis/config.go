@@ -59,7 +59,7 @@ func SetDefaults(cfg *ConsulAdmConfig) error {
 	DefaultAdvertise(cfg)
 	cfg.Version = constants.DefaultVersion
 	cfg.DataDir = constants.DefaultDataDir
-	cfg.DataCenter = "dc1"
+	cfg.DataCenter = constants.DefaultDataCenter
 	cfg.ServerMode = true
 	cfg.ClientAddr = "0.0.0.0"
 

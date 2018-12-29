@@ -23,6 +23,7 @@ import (
 
 	"github.com/hashicorp/consul/agent"
 	"github.com/hashicorp/consul/agent/config"
+	"github.com/nirmoy/consuladm/constants"
 
 	"github.com/spf13/cobra"
 )
@@ -73,7 +74,8 @@ var initCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(initCmd)
-	initCmd.PersistentFlags().StringVar(&consulAdmConfig.Name, "name", "", "consul member name")
+	initCmd.PersistentFlags().StringVar(&consulAdmConfig.Name, "name", "", "consul node name")
 	initCmd.PersistentFlags().StringVar(&consulAdmConfig.Advertise, "advertise", "", "Advertise address")
+	initCmd.PersistentFlags().StringVar(&consulAdmConfig.DataCenter, "datacenter", constants.DefaultDataCenter, "Advertise address")
 
 }

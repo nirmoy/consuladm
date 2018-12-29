@@ -20,4 +20,5 @@ const (
 	DefaultVersion        = "1.4.0"
 	DefaultCertificateDir = "/etc/pki"
 	DefaultDataDir        = "/var/lib/consul"
+	DefaultDataCenter     = "dc1"
 )
