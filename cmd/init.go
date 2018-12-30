@@ -41,6 +41,7 @@ var initCmd = &cobra.Command{
 		flagArgs.Config.DataDir = &consulAdmConfig.DataDir
 		flagArgs.Config.Datacenter = &consulAdmConfig.DataCenter
 		flagArgs.Config.ServerMode = &consulAdmConfig.ServerMode
+		flagArgs.Config.Bootstrap = &consulAdmConfig.Bootstrap
 		flagArgs.Config.ClientAddr = &consulAdmConfig.ClientAddr
 		flagArgs.Config.NodeName = &consulAdmConfig.Name
 		consul.AgentRun(flagArgs)

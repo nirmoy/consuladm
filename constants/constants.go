@@ -21,4 +21,5 @@ const (
 	DefaultCertificateDir = "/etc/pki"
 	DefaultDataDir        = "/var/lib/consul"
 	DefaultDataCenter     = "dc1"
+	DefaultHttpPort       = "8500"
 )

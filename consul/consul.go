@@ -10,7 +10,10 @@ import (
 
 func GetMember(addr string) *consulAPI.AgentMember {
 	config := consulAPI.DefaultConfig()
-	config.Address = addr
+	if addr != "" {
+		config.Address = addr
+	}
+
 	client, err := consulAPI.NewClient(config)
 	if err != nil {
 		fmt.Print(err)
@@ -36,7 +39,6 @@ func GetMemberDC(addr string) string {
 
 func AgentRun(flagArgs config.Flags) {
 
-	fmt.Print(*flagArgs.Config.AdvertiseAddrLAN)
 	b, err := config.NewBuilder(flagArgs)
 	if err != nil {
 		fmt.Print(err)

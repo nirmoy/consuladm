@@ -33,6 +33,7 @@ type ConsulAdmConfig struct {
 	DataDir         string
 	DataCenter      string
 	ServerMode      bool
+	Bootstrap       bool
 	ClientAddr      string
 }
 
@@ -61,6 +62,7 @@ func SetDefaults(cfg *ConsulAdmConfig) error {
 	cfg.DataDir = constants.DefaultDataDir
 	cfg.DataCenter = constants.DefaultDataCenter
 	cfg.ServerMode = true
+	cfg.Bootstrap = true
 	cfg.ClientAddr = "0.0.0.0"
 
 	return nil

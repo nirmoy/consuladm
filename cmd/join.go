@@ -37,7 +37,6 @@ var joinCmd = &cobra.Command{
 		var flagArgs config.Flags
 		addr := args[0]
 
-		fmt.Print(consul.GetMemberDC(addr))
 		flags := flag.NewFlagSet("", flag.ContinueOnError)
 		config.AddFlags(flags, &flagArgs)
 
@@ -45,10 +44,9 @@ var joinCmd = &cobra.Command{
 		flagArgs.Config.DataDir = &consulAdmConfig.DataDir
 		consulAdmConfig.ServerMode = false
 		flagArgs.Config.ServerMode = &consulAdmConfig.ServerMode
-		flagArgs.Config.ClientAddr = &consulAdmConfig.ClientAddr
 		flagArgs.Config.NodeName = &consulAdmConfig.Name
 
-		consulAdmConfig.DataCenter = consul.GetMemberDC(addr)
+		consulAdmConfig.DataCenter = consul.GetMemberDC(addr + ":" + constants.DefaultHttpPort)
 		flagArgs.Config.Datacenter = &consulAdmConfig.DataCenter
 		consul.AgentRun(flagArgs)
 		consul.AgentJoin(addr)
