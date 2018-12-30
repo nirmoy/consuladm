@@ -29,32 +29,41 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var initCmd = &cobra.Command{
-	Use:   "init",
-	Short: "Initialize a new consul agent",
+var joinCmd = &cobra.Command{
+	Use:   "join",
+	Short: "Join an existing consul cluster",
+	Args:  cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		var flagArgs config.Flags
+		addr := args[0]
+
+		fmt.Print(consul.GetMemberDC(addr))
 		flags := flag.NewFlagSet("", flag.ContinueOnError)
 		config.AddFlags(flags, &flagArgs)
 
 		flagArgs.Config.AdvertiseAddrLAN = &consulAdmConfig.Advertise
 		flagArgs.Config.DataDir = &consulAdmConfig.DataDir
-		flagArgs.Config.Datacenter = &consulAdmConfig.DataCenter
+		consulAdmConfig.ServerMode = false
 		flagArgs.Config.ServerMode = &consulAdmConfig.ServerMode
 		flagArgs.Config.ClientAddr = &consulAdmConfig.ClientAddr
 		flagArgs.Config.NodeName = &consulAdmConfig.Name
+
+		consulAdmConfig.DataCenter = consul.GetMemberDC(addr)
+		flagArgs.Config.Datacenter = &consulAdmConfig.DataCenter
 		consul.AgentRun(flagArgs)
-		fmt.Print("consulAdmConfig: init was successful, looping for ever\n")
+		consul.AgentJoin(addr)
+		fmt.Print("consulAdmConfig: [join] init was successful, looping for ever\n")
 		for {
 			time.Sleep(time.Second)
 		}
+
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(initCmd)
-	initCmd.PersistentFlags().StringVar(&consulAdmConfig.Name, "name", "", "consul node name")
-	initCmd.PersistentFlags().StringVar(&consulAdmConfig.Advertise, "advertise", "", "Advertise address")
-	initCmd.PersistentFlags().StringVar(&consulAdmConfig.DataCenter, "datacenter", constants.DefaultDataCenter, "Advertise address")
+	rootCmd.AddCommand(joinCmd)
+	joinCmd.PersistentFlags().StringVar(&consulAdmConfig.Name, "name", "", "consul node name")
+	joinCmd.PersistentFlags().StringVar(&consulAdmConfig.Advertise, "advertise", "", "Advertise address")
+	joinCmd.PersistentFlags().StringVar(&consulAdmConfig.DataCenter, "datacenter", constants.DefaultDataCenter, "Advertise address")
 
 }
