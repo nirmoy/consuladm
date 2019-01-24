@@ -415,7 +415,7 @@
   revision = "787624de3eb7bd915c329cba748687a3b22666a6"
 
 [[projects]]
-  digest = "1:48993213de216c2f4f21c4687d7aa5dd3d9d956c84ed5c95d6daf3f259a6b617"
+  digest = "1:a04afe9715bd8b40e358a4aa101066574bbb36c75b7562a8f78b2cab56b5653d"
   name = "github.com/hashicorp/consul"
   packages = [
     "acl",
@@ -449,6 +449,7 @@
     "lib",
     "lib/file",
     "lib/freeport",
+    "lib/semaphore",
     "logger",
     "sentinel",
     "snapshot",
@@ -459,8 +460,8 @@
     "watch",
   ]
   pruneopts = "UT"
-  revision = "0bddfa23a2ebe3c0773d917fc104f53d74f7a5ec"
-  version = "v1.4.0"
+  revision = "65d2c9b51d02e6b14db3da3cb8424ef72e046780"
+  version = "v1.4.1"
 
 [[projects]]
   digest = "1:0ade334594e69404d80d9d323445d2297ff8161637f9b2d347cc6973d2d6f05b"
