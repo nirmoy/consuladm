@@ -953,7 +953,7 @@
   revision = "e2103e2c35297fb7e17febb81e49b312087a2372"
 
 [[projects]]
-  digest = "1:cc08690d13a4b1090acb0db725f6959ffe7c8371c197cfdfc05f32f4e47b3209"
+  digest = "1:3fb45284d554f369d08136a0fd4d01f50897f6f79469358c41fb5a30a6379dfe"
   name = "github.com/shirou/gopsutil"
   packages = [
     "cpu",
@@ -961,10 +961,19 @@
     "host",
     "internal/common",
     "mem",
+    "net",
     "process",
   ]
   pruneopts = "UT"
   revision = "a11c78ba2c13c5b1ee59c53296ba35f92f0ce658"
+
+[[projects]]
+  branch = "master"
+  digest = "1:99c6a6dab47067c9b898e8c8b13d130c6ab4ffbcc4b7cc6236c2cd0b1e344f5b"
+  name = "github.com/shirou/w32"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "bb4de0191aa41b5507caa14b0650cdbddcd9280b"
 
 [[projects]]
   branch = "master"
@@ -1175,7 +1184,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:7dafb8f60a9f6797b40a53dd0665a182e78cf766ee24f669d487e741eb0fb95f"
+  digest = "1:eab4a02ffcc62793fbfaa397e1ad00663c6efd47f8c7cb8272b745872a115cde"
   name = "golang.org/x/sys"
   packages = [
     "cpu",
@@ -1183,7 +1192,7 @@
     "windows",
   ]
   pruneopts = "UT"
-  revision = "90b0e4468f9980bf79a2290394adaf7f045c5d24"
+  revision = "f0ce4c0180bef7e9c51babed693a6e47fdd8962f"
 
 [[projects]]
   digest = "1:40f92575285479681e674ccca7a605e38bebc27c9fdb51b75ff763e3c9f3cd5a"
