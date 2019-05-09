@@ -270,7 +270,7 @@
   revision = "e1a2a7ec64b07d04ac9ebb072404fe8b7b60de1b"
 
 [[projects]]
-  digest = "1:6037ef3d331e4f1926c91062d8094efaaed787d658fd860faeeef090b583a5f5"
+  digest = "1:90208fec7c9cbb6192a873fd7f4e99591ce057d49f658e3200585cfc56ad1987"
   name = "github.com/envoyproxy/go-control-plane"
   packages = [
     "envoy/api/v2",
@@ -282,6 +282,7 @@
     "envoy/api/v2/route",
     "envoy/config/filter/accesslog/v2",
     "envoy/config/filter/network/ext_authz/v2",
+    "envoy/config/filter/network/http_connection_manager/v2",
     "envoy/config/filter/network/tcp_proxy/v2",
     "envoy/service/auth/v2alpha",
     "envoy/service/discovery/v2",
@@ -415,7 +416,7 @@
   revision = "787624de3eb7bd915c329cba748687a3b22666a6"
 
 [[projects]]
-  digest = "1:30a06c795ce37ba6a1b34d756fd8ef703e52b37cafa059affe1271778940536d"
+  digest = "1:dac5874443fdf4b652edff99c4cf9be3e7b3423b5f5c9204169fed3e31d9b6c1"
   name = "github.com/hashicorp/consul"
   packages = [
     "acl",
@@ -428,6 +429,8 @@
     "agent/connect",
     "agent/connect/ca",
     "agent/consul",
+    "agent/consul/authmethod",
+    "agent/consul/authmethod/kubeauth",
     "agent/consul/autopilot",
     "agent/consul/fsm",
     "agent/consul/prepared_query",
@@ -445,23 +448,23 @@
     "agent/token",
     "agent/xds",
     "api",
+    "api/watch",
     "ipaddr",
     "lib",
     "lib/file",
-    "lib/freeport",
     "lib/semaphore",
     "logger",
+    "sdk/freeport",
+    "sdk/testutil/retry",
     "sentinel",
     "snapshot",
-    "testutil/retry",
     "tlsutil",
     "types",
     "version",
-    "watch",
   ]
   pruneopts = "UT"
-  revision = "567e41ff6b096a478333c804d5c18264050bc3f8"
-  version = "v1.4.3"
+  revision = "34eff659dcc5503b6eb117733c9f7def63f01bad"
+  version = "v1.5.0"
 
 [[projects]]
   digest = "1:0ade334594e69404d80d9d323445d2297ff8161637f9b2d347cc6973d2d6f05b"
@@ -470,6 +473,14 @@
   pruneopts = "UT"
   revision = "8a6fb523712970c966eefc6b39ed2c5e74880354"
   version = "v1.0.0"
+
+[[projects]]
+  digest = "1:a97a3a7d9bfff0da8bab62bac1839f84bc530425b38cdae48b4ba67de9116e80"
+  name = "github.com/hashicorp/go-bexpr"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "4007189f46bb28292d9267d67f2664d96246a161"
+  version = "v0.1.0"
 
 [[projects]]
   digest = "1:77cb3be9b21ba7f1a4701e870c84ea8b66e7d74c7c8951c58155fdadae9414ec"
@@ -953,7 +964,7 @@
   revision = "e2103e2c35297fb7e17febb81e49b312087a2372"
 
 [[projects]]
-  digest = "1:cc08690d13a4b1090acb0db725f6959ffe7c8371c197cfdfc05f32f4e47b3209"
+  digest = "1:3fb45284d554f369d08136a0fd4d01f50897f6f79469358c41fb5a30a6379dfe"
   name = "github.com/shirou/gopsutil"
   packages = [
     "cpu",
@@ -961,10 +972,19 @@
     "host",
     "internal/common",
     "mem",
+    "net",
     "process",
   ]
   pruneopts = "UT"
   revision = "a11c78ba2c13c5b1ee59c53296ba35f92f0ce658"
+
+[[projects]]
+  branch = "master"
+  digest = "1:99c6a6dab47067c9b898e8c8b13d130c6ab4ffbcc4b7cc6236c2cd0b1e344f5b"
+  name = "github.com/shirou/w32"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "bb4de0191aa41b5507caa14b0650cdbddcd9280b"
 
 [[projects]]
   branch = "master"
@@ -1110,7 +1130,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:e7fbe017ed3d0e07c00d2146ad350daefcaa9fc6e099a60f62380fb75a45ce54"
+  digest = "1:126cbed1369b3fc5049820ce2cc75df68818a1287704253905cd7ae9da32316d"
   name = "golang.org/x/crypto"
   packages = [
     "blake2b",
@@ -1119,6 +1139,7 @@
     "ed25519/internal/edwards25519",
     "internal/chacha20",
     "internal/subtle",
+    "pbkdf2",
     "poly1305",
     "ssh",
     "ssh/agent",
@@ -1167,9 +1188,12 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:75515eedc0dc2cb0b40372008b616fa2841d831c63eedd403285ff286c593295"
+  digest = "1:1a920de2ce77fd8ab3e5ad3fc89f76ad697eb28b7f8b38e37d51642896190adc"
   name = "golang.org/x/sync"
-  packages = ["semaphore"]
+  packages = [
+    "semaphore",
+    "singleflight",
+  ]
   pruneopts = "UT"
   revision = "37e7f081c4d4c64e13b10787722085407fe5d15f"
 
@@ -1302,6 +1326,19 @@
   pruneopts = "UT"
   revision = "3887ee99ecf07df5b447e9b00d9c0b2adaa9f3e4"
   version = "v0.9.0"
+
+[[projects]]
+  digest = "1:9593bab40e981b1f90b7e07faeab0d09b75fe338880d08880f986a9d3283c53f"
+  name = "gopkg.in/square/go-jose.v2"
+  packages = [
+    ".",
+    "cipher",
+    "json",
+    "jwt",
+  ]
+  pruneopts = "UT"
+  revision = "730df5f748271903322feb182be83b43ebbbe27d"
+  version = "v2.3.1"
 
 [[projects]]
   digest = "1:4d2e5a73dc1500038e504a8d78b986630e3626dc027bc030ba5c75da257cdb96"
