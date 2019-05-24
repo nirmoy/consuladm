@@ -1199,7 +1199,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:832105dfef7fb8befe37f774c2ab4db8eec28b0e05501dee908d5daac0afbd20"
+  digest = "1:4fc8953754497ea7464ef6b4614902345d786405d2e9b3b962af361679c66130"
   name = "golang.org/x/sys"
   packages = [
     "cpu",
@@ -1207,7 +1207,7 @@
     "windows",
   ]
   pruneopts = "UT"
-  revision = "8097e1b27ff5e40620836729a9584e91b094b062"
+  revision = "0e01d883c5c5e3a1741118a9962f68d71b0a6ed4"
 
 [[projects]]
   digest = "1:40f92575285479681e674ccca7a605e38bebc27c9fdb51b75ff763e3c9f3cd5a"
