@@ -416,7 +416,7 @@
   revision = "787624de3eb7bd915c329cba748687a3b22666a6"
 
 [[projects]]
-  digest = "1:dac5874443fdf4b652edff99c4cf9be3e7b3423b5f5c9204169fed3e31d9b6c1"
+  digest = "1:544998706cacc6fc73f16d0ad27518ffaa0010e93e620caec696b36e81242592"
   name = "github.com/hashicorp/consul"
   packages = [
     "acl",
@@ -463,8 +463,8 @@
     "version",
   ]
   pruneopts = "UT"
-  revision = "34eff659dcc5503b6eb117733c9f7def63f01bad"
-  version = "v1.5.0"
+  revision = "40cec98468b829e5cdaacb0629b3e23a028db688"
+  version = "v1.5.1"
 
 [[projects]]
   digest = "1:0ade334594e69404d80d9d323445d2297ff8161637f9b2d347cc6973d2d6f05b"
