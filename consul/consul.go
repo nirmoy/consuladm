@@ -37,25 +37,24 @@ func GetMemberDC(addr string) string {
 	return ""
 }
 
-func AgentRun(flagArgs config.Flags) {
+func AgentRun(flagArgs config.Flags) error {
 
 	b, err := config.NewBuilder(flagArgs)
 	if err != nil {
-		fmt.Print(err)
+		return err
 	}
 	cfg, err := b.BuildAndValidate()
 	if err != nil {
-		fmt.Print(err)
+		return err
 	}
 	agent, err := agent.New(&cfg)
 	if err != nil {
-		fmt.Printf("Error creating agent: %s", err)
-		return
+		return fmt.Errorf("Error creating agent: %s", err)
 	}
 	if err := agent.Start(); err != nil {
-		fmt.Printf("Error starting agent: %s", err)
+		return fmt.Errorf("Error starting agent: %s", err)
 	}
-
+	return nil
 }
 
 func AgentJoin(addr string) error {

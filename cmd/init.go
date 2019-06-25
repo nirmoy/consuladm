@@ -44,7 +44,10 @@ var initCmd = &cobra.Command{
 		flagArgs.Config.Bootstrap = &consulAdmConfig.Bootstrap
 		flagArgs.Config.ClientAddr = &consulAdmConfig.ClientAddr
 		flagArgs.Config.NodeName = &consulAdmConfig.Name
-		consul.AgentRun(flagArgs)
+		if err := consul.AgentRun(flagArgs); err != nil {
+			fmt.Println(err)
+			return
+		}
 		fmt.Print("consulAdmConfig: init was successful, looping for ever\n")
 		for {
 			time.Sleep(time.Second)
