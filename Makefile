@@ -7,7 +7,7 @@ BIN := consuladm
 all: $(BIN)
 
 $(BIN):
-	go build -o $(BIN) main.go
+	GO111MODULE=on go build -o $(BIN) main.go
 
 clean:
 	rm -f $(BIN)
