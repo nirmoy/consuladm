@@ -19,6 +19,7 @@ package cmd
 import (
 	"flag"
 	"fmt"
+	"os"
 	"time"
 
 	"github.com/hashicorp/consul/agent/config"
@@ -48,8 +49,14 @@ var joinCmd = &cobra.Command{
 
 		consulAdmConfig.DataCenter = consul.GetMemberDC(addr + ":" + constants.DefaultHttpPort)
 		flagArgs.Config.Datacenter = &consulAdmConfig.DataCenter
-		consul.AgentRun(flagArgs)
-		consul.AgentJoin(addr)
+		if err := consul.AgentRun(flagArgs); err != nil {
+			fmt.Println(err)
+			os.Exit(-1)
+		}
+		if err := consul.AgentJoin(addr); err != nil {
+			fmt.Println(err)
+			os.Exit(-1)
+		}
 		fmt.Print("consulAdmConfig: [join] init was successful, looping for ever\n")
 		for {
 			time.Sleep(time.Second)
